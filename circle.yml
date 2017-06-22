@@ -5,5 +5,3 @@ machine:
 test:
   pre:
     - npm rebuild node-sass
-  post:
-    - codecov -t $CODECOV
