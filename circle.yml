@@ -4,5 +4,4 @@ machine:
 
 test:
   pre:
-    - npm update -g npm
     - npm rebuild node-sass
