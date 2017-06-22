@@ -2,7 +2,10 @@
 
 > Tech test for BuildIt
 
+[![CircleCI](https://img.shields.io/circleci/project/github/leeDav/buildit.svg)](https://circleci.com/gh/leeDav/buildit) [![codecov](https://codecov.io/gh/leeDav/buildit/branch/master/graph/badge.svg)](https://codecov.io/gh/leeDav/buildit)
 ## Build Setup
+Below lists the default instructions written by VueCLI. If you have Yarn installed,
+you can use that instead, such as `yarn` instead of `npm install`.
 
 ``` bash
 # install dependencies
