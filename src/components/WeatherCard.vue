@@ -6,9 +6,7 @@
     <template v-if="info.weather[0].main != '-'">
       <img :src="'http://openweathermap.org/img/w/' + info.weather[0].icon + '.png'" />
       <h2 class="weather__card-temp">{{ Math.round(info.main.temp) }}<sup>o</sup>C</h2>
-      <img appear src="/static/wind-arrow.svg" class="wind__arrow"
-            :style="styles"
-            alt="Wind direction, north by north west" />
+      <WindArrow :deg="info.wind.deg"></WindArrow>
     </template>
     <template v-else>
       <h4>-</h4>
@@ -17,24 +15,15 @@
 </template>
 
 <script>
-export default {
-  name: 'WeatherCard',
-  props: ['info'],
-  mounted() {
-    // We're wrapping this in a setTimeout because we want there to be
-    // a split second delay before the rotation animation starts
-    setTimeout(() => {
-      this.styles.transform = `rotate(${this.info.wind.deg}deg)`;
-    }, 0);
-  },
-  data() {
-    return {
-      styles: {
-        transform: 'rotate(90deg)',
-      },
-    };
-  },
-};
+  import WindArrow from './WindArrow';
+
+  export default {
+    name: 'WeatherCard',
+    props: ['info'],
+    components: {
+      WindArrow,
+    },
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
