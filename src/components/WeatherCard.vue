@@ -4,7 +4,7 @@
     <h3 class="weather__card-title">{{ info.weather[0].main }}</h3>
     <h4 class="weather__card-desc">{{ info.weather[0].description }}</h4>
     <template v-if="info.weather[0].main != '-'">
-      <img :src="'http://openweathermap.org/img/w/' + info.weather[0].icon + '.png'" />
+      <img :src="'http://openweathermap.org/img/w/' + info.weather[0].icon + '.png'" alt="Icon representing the weather" />
       <h2 class="weather__card-temp">{{ Math.round(info.main.temp) }}<sup>o</sup>C</h2>
       <WindArrow :deg="info.wind.deg"></WindArrow>
     </template>
