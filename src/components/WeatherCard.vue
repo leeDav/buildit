@@ -1,6 +1,6 @@
 <template>
   <article class="weather__card">
-    <h4 class="weather__card-time">{{ info.dt_txt.split(' ')[1] }}</h4>
+    <h4 class="weather__card-time"><time>{{ info.dt_txt.split(' ')[1].slice(0, -3) }}</time></h4>
     <h3 class="weather__card-title">{{ info.weather[0].main }}</h3>
     <h4 class="weather__card-desc">{{ info.weather[0].description }}</h4>
     <template v-if="info.weather[0].main != '-'">
@@ -30,7 +30,6 @@
 <style scoped>
   .weather__card {
     background-color: white;
-    /*border: 1px solid black;*/
     line-height: 1.5;
     width: 200px;
     float: left;

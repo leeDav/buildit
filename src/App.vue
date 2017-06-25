@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <article class="day" v-for="day in weather">
-        <h2>{{ dateFromString(day[6].dt_txt) }}</h2>
+        <h2><time :datetime="day[6].dt_txt.split(' ')[0]">{{ dateFromString(day[6].dt_txt) }}</time></h2>
         <div class="day__row">
           <div class="day__row-days">
             <WeatherCard v-for="hour in day" :key="hour.dt" :info="hour"></WeatherCard>
