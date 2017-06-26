@@ -18,6 +18,8 @@ More accessibility. Tabbed navigation has been added, but I feel like more could
 
 Auto-scroll to the current time of the day, so the user doesn't have to scroll.
 
+More user-friendly dates, e.g. "Wednesday, June 28th" instead of "Wed Jun 28"
+
 ## Build Setup
 Below lists the default instructions written by VueCLI. If you have Yarn installed,
 you can use that instead, such as `yarn` instead of `npm install`.
