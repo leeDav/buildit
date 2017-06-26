@@ -1,18 +1,19 @@
 <template>
-  <article class="weather__card">
+  <article class="weather__card" tabindex="0">
     <h2 class="weather__card-time">
-      <time :datetime="info.dt_txt.replace(' ', 'T')">
+      <time>
         {{ info.dt_txt.split(' ')[1].slice(0, -3) }}
       </time>
     </h2>
-    <h3 class="weather__card-title">{{ info.weather[0].main }}</h3>
     <h4 class="weather__card-desc">{{ info.weather[0].description }}</h4>
+    <h3 class="weather__card-title">{{ info.weather[0].main }}</h3>
     <template v-if="info.weather[0].main != '-'">
       <img
         :src="'http://openweathermap.org/img/w/' + info.weather[0].icon + '.png'"
         class="weather__icon"
+        aria-hidden="true"
         alt="Icon representing the weather" />
-      <h2 class="weather__card-temp">{{ Math.round(info.main.temp) }}<sup>o</sup>C</h2>
+      <h2 class="weather__card-temp">{{ Math.round(info.main.temp) }}&deg;<abbr title="celcius">C</abbr></h2>
       <WindArrow :deg="info.wind.deg"></WindArrow>
     </template>
     <template v-else>

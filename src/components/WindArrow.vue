@@ -1,7 +1,7 @@
 <template>
   <img appear src="/static/wind-arrow.svg" class="wind__arrow"
         :style="styles"
-        :alt="getWindDirection(this.deg)"
+        :alt="'Wind direction, ' + getWindDirection(this.deg)"
         :title="getWindDirection(this.deg)" />
 </template>
 
