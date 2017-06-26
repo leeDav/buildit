@@ -3,6 +3,21 @@
 > Tech test for BuildIt
 
 [![CircleCI](https://img.shields.io/circleci/project/github/leeDav/buildit.svg)](https://circleci.com/gh/leeDav/buildit) [![codecov](https://codecov.io/gh/leeDav/buildit/branch/master/graph/badge.svg)](https://codecov.io/gh/leeDav/buildit)
+
+Shows the weather for Copenhagen, Denmark.
+
+## Brief set up instructions
+1. `npm install` or `yarn` (if you have yarn installed)
+2. `npm run dev` or `yarn dev` to run development server (or `npm build` to build dist)
+3. `npm run test` or `yarn test` to run unit and e2e tests
+3a. `npm run [unit/e2e]` or `yarn [unit/e2e]` to run individually
+4. Enjoy!
+
+## What could be done with more time
+More accessibility. Tabbed navigation has been added, but I feel like more could be done, especially with ARIA.
+
+Auto-scroll to the current time of the day, so the user doesn't have to scroll.
+
 ## Build Setup
 Below lists the default instructions written by VueCLI. If you have Yarn installed,
 you can use that instead, such as `yarn` instead of `npm install`.
