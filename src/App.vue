@@ -21,7 +21,9 @@ export default {
   name: 'app',
   data() {
     return {
-      API: '/static/_sample-data.json',
+      API: 'http://api.openweathermap.org/data/2.5/forecast',
+      API_APP_KEY: 'aeaaec3638e18d0b509126c2c7410f01',
+      API_CITY_ID: 2618425, // Geo-coded from response, 2618425 = Copenhagen, Denmark
       EMPTY_CHAR: '-',
       weather: [],
     };
@@ -41,7 +43,14 @@ export default {
       return new Date(year, month - 1, day, hour, min, sec).toDateString();
     },
     getData() {
-      return axios.get(this.API)
+      return axios({
+        method: 'GET',
+        url: this.API,
+        params: {
+          id: this.API_CITY_ID,
+          appid: this.API_APP_KEY,
+          units: 'metric',
+        } })
         .then((response) => {
           this.weather = this.formatResults(response);
         })

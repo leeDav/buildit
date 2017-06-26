@@ -72,19 +72,17 @@ describe('try and load some data from somewhere', () => {
   });
 
   it('should return an error if the status code is not 200', (done) => {
-    moxios.stubRequest(App.data().API, {
-      status: 500,
-      responseText: {
-        data: {},
-      },
-    });
-
     const VM = new Vue(App);
-    expect(VM.$data.weather).to.have.length(0);
-
-    VM.getData().then(() => {
-      expect(VM.$data.weather).to.be.an('error');
-    }).then(done, done);
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 500,
+        response: '',
+      }).then(() => {
+        expect(VM.$data.weather).to.be.an('error');
+        done();
+      });
+    });
   });
 
   it('should return the number of quarterly segments to add', () => {

@@ -67,7 +67,6 @@
 
     display: inline-block;
     font-weight: 300;
-    vertical-align: top;
   }
 
   .weather__card-title {
