@@ -72,6 +72,8 @@
   };
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+  .wind__arrow {
+    vertical-align: middle;
+  }
 </style>

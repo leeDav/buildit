@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <article class="day" v-for="day in weather">
-        <h2><time :datetime="day[6].dt_txt.split(' ')[0]">{{ dateFromString(day[6].dt_txt) }}</time></h2>
+        <h1 class="day__header"><time :datetime="day[6].dt_txt.split(' ')[0]">{{ dateFromString(day[6].dt_txt) }}</time></h1>
         <div class="day__row">
           <div class="day__row-days">
             <WeatherCard v-for="hour in day" :key="hour.dt" :info="hour"></WeatherCard>
@@ -129,19 +129,28 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import './assets/scss/variables';
+@import './assets/scss/font-sizes';
+@import './assets/scss/colours';
+@import './assets/scss/resets';
 
 body {
-  background-color: #fafafa;
+  background-color: $page;
+  line-height: 1.5;
+  margin: $base;
 }
 
-h2 {
-  background-color: #ccc;
-  margin-bottom: 0;
+.day__header {
+  @extend %font-xl;
+
+  background-color: $primary;
+  margin: 0;
 }
 
 .day {
   overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 // Yes "overflow-scrolling: touch" is hacky and not fully
@@ -156,15 +165,16 @@ h2 {
 }
 
 .day__row-days {
+  background-color: $white;
   float: left;
   width: calc(200px * 8);
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  -webkit-font-smoothing: antialiased;
   color: #2c3e50;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  text-align: center;
 }
 </style>

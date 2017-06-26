@@ -1,0 +1,11 @@
+@import './node_modules/modularscale-sass/stylesheets/modularscale';
+
+$modularscale: (
+  base: 1rem,
+  ratio: 1.618
+);
+
+%font-xl { font-size: ms(2); }
+%font-l { font-size: ms(1); }
+%font-m { font-size: ms(0); }
+%font-s { font-size: ms(-1); }

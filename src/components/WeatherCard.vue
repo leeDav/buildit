@@ -1,10 +1,17 @@
 <template>
   <article class="weather__card">
-    <h4 class="weather__card-time"><time>{{ info.dt_txt.split(' ')[1].slice(0, -3) }}</time></h4>
+    <h2 class="weather__card-time">
+      <time :datetime="info.dt_txt.replace(' ', 'T')">
+        {{ info.dt_txt.split(' ')[1].slice(0, -3) }}
+      </time>
+    </h2>
     <h3 class="weather__card-title">{{ info.weather[0].main }}</h3>
     <h4 class="weather__card-desc">{{ info.weather[0].description }}</h4>
     <template v-if="info.weather[0].main != '-'">
-      <img :src="'http://openweathermap.org/img/w/' + info.weather[0].icon + '.png'" alt="Icon representing the weather" />
+      <img
+        :src="'http://openweathermap.org/img/w/' + info.weather[0].icon + '.png'"
+        class="weather__icon"
+        alt="Icon representing the weather" />
       <h2 class="weather__card-temp">{{ Math.round(info.main.temp) }}<sup>o</sup>C</h2>
       <WindArrow :deg="info.wind.deg"></WindArrow>
     </template>
@@ -27,47 +34,55 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+  @import '../assets/scss/colours';
+  @import '../assets/scss/font-sizes';
+
   .weather__card {
-    background-color: white;
-    line-height: 1.5;
-    width: 200px;
     float: left;
-  }
+    width: 200px;
 
-  img {
-    vertical-align: middle;
-  }
-
-  h2,
-  h3,
-  h4 {
-    margin: 0;
+    &::after {
+      clear: left;
+    }
   }
 
   .wind__arrow {
     height: 20px;
-    width: 20px;
     margin: 0 10px;
-    transition: 750ms transform cubic-bezier(.5,1.9,.44,1.2);
     transform: rotate(0deg);
+    transition: 750ms transform cubic-bezier(.5,1.9,.44,1.2);
+    width: 20px;
   }
 
   .weather__card-time {
-    background-color: #ccc;
+    @extend %font-m;
+
+    background-color: $secondary;
   }
 
   .weather__card-temp {
+    @extend %font-l;
+
     display: inline-block;
     font-weight: 300;
+    vertical-align: top;
   }
 
   .weather__card-title {
+    @extend %font-l;
+
     margin: 0;
   }
 
   .weather__card-desc {
+    @extend %font-m;
+
     font-weight: 300;
     margin-top: 0;
+  }
+
+  .weather__icon {
+    vertical-align: middle;
   }
 </style>
