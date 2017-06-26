@@ -10,7 +10,6 @@ module.exports = {
       .waitForElementVisible('#app', 5000)
       .assert.elementPresent('.weather__card')
       .assert.containsText('.weather__card-time', '00:00')
-      .assert.elementCount('.weather__card', 40)
       .end();
   },
 };

@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <article class="day" v-for="day in weather">
-        <h1 class="day__header"><time :datetime="day[6].dt_txt.split(' ')[0]" tabindex="0">
-          {{ dateFromString(day[6].dt_txt) }}</time>
+        <h1 class="day__header">
+          <time :datetime="day[day.length - 1].dt_txt.split(' ')[0]" tabindex="0">
+            {{ dateFromString(day[day.length - 1].dt_txt) }}
+          </time>
         </h1>
         <div class="day__row">
           <div class="day__row-days">
@@ -43,9 +45,7 @@ export default {
       return new Date(year, month - 1, day, hour, min, sec).toDateString();
     },
     getData() {
-      return axios({
-        method: 'GET',
-        url: this.API,
+      return axios.get(this.API, {
         params: {
           id: this.API_CITY_ID,
           appid: this.API_APP_KEY,
