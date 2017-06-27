@@ -20,6 +20,9 @@ Auto-scroll to the current time of the day, so the user doesn't have to scroll.
 
 More user-friendly dates, e.g. "Wednesday, June 28th" instead of "Wed Jun 28"
 
+### Known bug
+Sometimes the forecast doesn't run up to midnight on the fifth day, leaving empty time sections. This could be fixed by checking the fifth days array has eight elements, and `arr.push()`'ing empty times if not, similar to how we prepend empty time objects on the first day when the forecast no longer applies.
+
 ## Build Setup
 Below lists the default instructions written by VueCLI. If you have Yarn installed,
 you can use that instead, such as `yarn` instead of `npm install`.
