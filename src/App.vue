@@ -26,8 +26,20 @@ export default {
       API: 'http://api.openweathermap.org/data/2.5/forecast',
       API_APP_KEY: 'aeaaec3638e18d0b509126c2c7410f01',
       API_CITY_ID: 2618425, // Geo-coded from response, 2618425 = Copenhagen, Denmark
-      EMPTY_CHAR: '-',
       weather: [],
+      EMPTY_SET: { // Empty response object
+        main: {
+          temp: '-',
+        },
+        weather: [{
+          main: '-',
+          description: '-',
+        }],
+        wind: {
+          deg: '-',
+        },
+        dt_txt: '',
+      },
     };
   },
   created() {
@@ -102,23 +114,14 @@ export default {
     prependToArray(results, num) {
       const arr = results;
       for (let i = 0; i < num; i += 1) {
+        // Object.create because we want to duplicate it, not reference it
+        const newSet = Object.create(this.EMPTY_SET);
         let time = (num * 3) - (i * 3) - 3;
         // Pad the time with a leading zero; 3:00 -> 03:00
         time = `0${time}`.slice(-2);
         time = `00-00-00 ${time}:00:00`;
-        arr.unshift({
-          main: {
-            temp: 0,
-          },
-          weather: [{
-            main: this.EMPTY_CHAR,
-            description: this.EMPTY_CHAR,
-          }],
-          wind: {
-            deg: 0,
-          },
-          dt_txt: time,
-        });
+        newSet.dt_txt = time;
+        arr.unshift(newSet);
       }
       return arr;
     },
