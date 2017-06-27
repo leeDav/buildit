@@ -20,6 +20,8 @@ Auto-scroll to the current time of the day, so the user doesn't have to scroll.
 
 More user-friendly dates, e.g. "Wednesday, June 28th" instead of "Wed Jun 28"
 
+Add arrows on mobile versions, to indicate it's a carousel and you can you scroll horizontally.
+
 ### Known bug
 Sometimes the forecast doesn't run up to midnight on the fifth day, leaving empty time sections. This could be fixed by checking the fifth days array has eight elements, and `arr.push()`'ing empty times if not, similar to how we prepend empty time objects on the first day when the forecast no longer applies.
 
